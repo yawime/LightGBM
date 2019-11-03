@@ -6,6 +6,7 @@
 #define LIGHTGBM_TREELEARNER_SPLIT_INFO_HPP_
 
 #include <LightGBM/meta.h>
+#include <LightGBM/utils/random.h>
 
 #include <limits>
 #include <cmath>
@@ -21,6 +22,7 @@ namespace LightGBM {
 */
 struct SplitInfo {
  public:
+  static Random rand;
   /*! \brief Feature index */
   int feature = -1;
   /*! \brief Split threshold */
@@ -158,7 +160,7 @@ struct SplitInfo {
       return local_gain > other_gain;
     } else {
       // if same gain, use smaller feature
-      return local_feature < other_feature;
+      return rand.NextFloat() < 0.5;
     }
   }
 

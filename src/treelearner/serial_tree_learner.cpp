@@ -892,4 +892,6 @@ void SerialTreeLearner::RenewTreeOutput(Tree* tree, const ObjectiveFunction* obj
   }
 }
 
+Random SplitInfo::rand = Random(1);
+
 }  // namespace LightGBM
